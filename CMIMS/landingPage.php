@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clinic & Medical Inventory Management System</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="../assets/CMIMS_logo.png">
+    <link href="../dist/output.css" rel="stylesheet">
     <style>
         @keyframes fade-in-left {
             0% {
