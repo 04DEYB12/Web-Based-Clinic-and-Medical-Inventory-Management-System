@@ -73,12 +73,19 @@ include_once("../model/connection.php");
         
         <!-- Logo and Title -->
         <div class="text-center mb-10 mt-4">
-            <div class="relative inline-block mb-6">
-                <div class="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-full blur-lg opacity-50"></div>
-                <img src="../assets/CMIMS_logo.png" alt="CMIMS Logo" class="relative w-24 h-24 rounded-full border-4 border-white shadow-lg">
+            <div class="relative inline-block mb-8">
+                <!-- Enhanced glow effect -->
+                <div class="absolute inset-0 bg-gradient-to-r from-green-400 via-emerald-400 to-green-500 rounded-full blur-2xl opacity-60 scale-110"></div>
+                <!-- Secondary glow -->
+                <div class="absolute inset-0 bg-gradient-to-r from-emerald-300 to-green-400 rounded-full blur-xl opacity-40 scale-105"></div>
+                <!-- Character image with enhanced styling -->
+                <img id="charater" src="../assets/character_facing.png" alt="CMIMS Logo" 
+                     class="relative w-32 h-32 rounded-full border-4 border-white shadow-2xl object-cover transform hover:scale-105 transition-all duration-300">
+                <!-- Animated ring around character -->
+                <div class="absolute inset-0 rounded-full border-2 border-green-400 opacity-50 animate-pulse"></div>
             </div>
-            <h2 class="text-4xl font-bold text-gray-800 mb-3">Welcome Back</h2>
-            <p class="text-gray-600 text-lg">Login to your account</p>
+            <h2 class="text-4xl font-bold text-gray-800 mb-3 bg-gradient-to-r from-green-700 to-emerald-600 bg-clip-text text-transparent">Welcome Back</h2>
+            <p class="text-gray-600 text-lg font-medium">Login to your account</p>
         </div>
 
         <!-- Login Form -->
@@ -188,6 +195,24 @@ include_once("../model/connection.php");
                 showAlert('An error occurred while logging in: ' + error.message, 'error');
             });
         }
+
+        // Character image change on input focus
+        const characterImg = document.getElementById('charater');
+        const useridInput = document.getElementById('userid');
+
+        function updateCharacterImage(isFocused) {
+            if (isFocused) {
+                characterImg.src = '../assets/character_down.png';
+            } else {
+                characterImg.src = '../assets/character_facing.png';
+            }
+        }
+
+        // Add focus/blur event listeners
+        useridInput.addEventListener('focus', () => updateCharacterImage(true));
+        useridInput.addEventListener('blur', () => updateCharacterImage(false));
+        passwordInput.addEventListener('focus', () => updateCharacterImage(true));
+        passwordInput.addEventListener('blur', () => updateCharacterImage(false));
     </script>
 </body>
 </html>
